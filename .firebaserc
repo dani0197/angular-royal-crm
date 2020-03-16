@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "my-first-firebase-projec-47e2b"
+  },
+  "targets": {
+    "my-first-firebase-projec-47e2b": {
+      "hosting": {
+        "royal-crm": [
+          "my-first-firebase-projec-47e2b"
+        ]
+      }
+    }
+  }
+}

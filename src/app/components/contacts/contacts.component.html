@@ -1,0 +1,47 @@
+<app-page-header
+  [title]="title"
+  [description]="description"
+  [icon]="icon"
+  (clicked)="emitClick($event)"
+></app-page-header>
+<div class="row mt-3">
+  <div class="col-12">
+    <h4>Company Employees Contact Table</h4>
+    <table *ngIf="contacts.length; else noContacts" class="table table-borderd">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Birthday</th>
+          <th>Phones</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let contact of contacts; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ contact.name | cleanName | titlecase }}</td>
+        <td>{{ contact.email | lowercase }}</td>
+        <td>{{ contact.date | date: "dd/MM/yyyy" }}</td>
+        <td>
+          <ul *ngIf="contact?.phones?.length">
+            <li *ngFor="let phone of contact.phones">{{ phone }}</li>
+          </ul>
+          <p *ngIf="!contact?.phones?.length"><i>No Phones...</i></p>
+        </td>
+      </tr>
+    </table>
+
+    <ng-template #noContacts>
+      <p><i>Contacts not found...</i></p>
+    </ng-template>
+  </div>
+</div>
+
+<!-- <div class="contacts-list">
+  <table class="table">
+    <tr *ngFor="let user of usersData">
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+    </tr>
+  </table>
+</div> -->
